@@ -45,5 +45,5 @@
 <script setup>
 import useAuth from '../composables/auth.js'
 
-const {submitLogin,loginForm, validationErrors } = useAuth()
+const {submitLogin ,loginForm, validationErrors } = useAuth()
 </script>

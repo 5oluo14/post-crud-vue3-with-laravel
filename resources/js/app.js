@@ -9,12 +9,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import useAuth from './composables/auth.js'
 
 
-const app = createApp({
-    setup() {
-        const { getUser } = useAuth()
-        onMounted(getUser)
-    }
-})
+const app = createApp({})
 
 app.use(router)
 app.use(VueSweetalert2)

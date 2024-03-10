@@ -21,10 +21,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::group(['middlware'=>'auth:sanctum'],function(){
+Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('posts', PostController::class);
     Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
     Route::get('/user', function (Request $request) {
-            return $request->user();
-        });
+        return $request->user();
+    });
 });

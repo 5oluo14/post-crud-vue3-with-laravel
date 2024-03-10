@@ -1,5 +1,6 @@
 <script>
 import useAuth from '../composables/auth.js' 
+import {onMounted} from "vue";
 
 export default {
     computed :{
@@ -9,9 +10,11 @@ export default {
     },
 
     setup(){
-        const {user,logout} = useAuth()
+        const {user,logout,getUser} = useAuth()
         // console.log(user)
+        onMounted(getUser)
         return {user,logout}
+
     }
 }
 </script>
@@ -44,7 +47,15 @@ export default {
                     </div>
                     <div class="flex items-center">
                         <div>
-                            <button @click="logout" type="button" class="inline-flex items-center px-4 py-2 bg-blue">logout</button>
+                            <div>
+                                Hi, {{ user.name }}
+                            </div>
+                            <div class="text-sm text-gray-500">{{ user.email }}</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div>
+                            <button @click="logout" type="button" class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded">logout</button>
                         </div>
                     </div>
 
