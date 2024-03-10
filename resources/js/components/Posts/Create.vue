@@ -24,7 +24,7 @@ onMounted(()=>{
                     Title
                 </label>
                 <input v-model="post.title" type="text" class="black block mt-1 w-full text-black rounded-md shadow-sm boarder-gray-600"/>
-                <div class="texr-red-600 mt-1">
+                <div class="text-red-600 mt-1">
                     <div v-for="message in validationErrors?.title">
                         {{message}}
                     </div>
@@ -36,7 +36,7 @@ onMounted(()=>{
                     Content
                 </label>
                 <textarea v-model="post.content" type="text" class="black block mt-1 w-full text-black rounded-md shadow-sm boarder-gray-600"/>
-                <div class="texr-red-600 mt-1">
+                <div class="text-red-600 mt-1">
                     <div v-for="message in validationErrors?.content">
                         {{message}}
                     </div>
@@ -51,7 +51,7 @@ onMounted(()=>{
                     <option value="" selected>--choose category--</option>
                     <option v-for="category in categories" :value="category.id">{{category.name}}</option>
                   </select>
-                  <div class="texr-red-600 mt-1">
+                  <div class="text-red-600 mt-1">
                     <div v-for="message in validationErrors?.category_id">
                         {{message}}
                     </div>
