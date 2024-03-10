@@ -37,7 +37,7 @@
 
         <div class="flex items-center justify-end mt-4">
 
-            <button class="px-3 mt-4 py-2 bg-blue-600 text-white rounded">login</button>
+            <button class="px-3 mt-4 py-2 bg-gray-600 text-white rounded">login</button>
 
         </div>
     </form>

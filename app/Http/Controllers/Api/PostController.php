@@ -77,7 +77,12 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
-        return response()->noContent();
+        if (request()->user()->hasPermissionTo('posts.delete')) {
+            $post->delete();
+            return response()->noContent();
+        }
+        return response()->json([
+            'errors' => 'not authorized'
+        ], 403);
     }
 }
