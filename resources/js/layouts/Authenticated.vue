@@ -1,6 +1,7 @@
 <script>
 import useAuth from '../composables/auth.js' 
 import {onMounted} from "vue";
+import { useAbility } from '@casl/vue';
 
 export default {
     computed :{
@@ -11,9 +12,9 @@ export default {
 
     setup(){
         const {user,logout,getUser} = useAuth()
-        // console.log(user)
+        const { can } = useAbility()
         onMounted(getUser)
-        return {user,logout}
+        return {user,logout,can}
 
     }
 }
@@ -39,7 +40,7 @@ export default {
                                 class="inline-flex items-center px-1 pt-1">
                                 Posts
                             </router-link>
-                            <router-link :to="{name:'posts.create'}" active-class="boarder-b-2 boarder-white-400 "
+                            <router-link v-if="can('posts.create')" :to="{name:'posts.create'}" active-class="boarder-b-2 boarder-white-400 "
                                 class="inline-flex items-center px-1 pt-1 ">
                                 cretae Post
                             </router-link>

@@ -2,6 +2,7 @@
 import usePosts from '../../composables/posts'
 import useCategories from '../../composables/categories'
 import { onMounted, ref, watch } from 'vue';
+import { useAbility } from '@casl/vue';
 
 const search_category = ref('')
 const search_id = ref('')
@@ -10,6 +11,7 @@ const search_content = ref('')
 const search_global = ref('')
 const { posts, getPosts, deletePost } = usePosts();
 const { categories, getCategories } = useCategories();
+const { can } = useAbility()
 onMounted(() => {
   getPosts()
   getCategories()
@@ -115,8 +117,8 @@ watch(search_global, (current, previous) => {
           <td class="border border-slate-700 p-6 text-center">{{ post.content }}</td>
           <td class="border border-slate-700 p-6 text-center">{{ post.created_at }}</td>
           <td class="border border-slate-700 p-6 text-center">
-            <router-link :to="{ name: 'posts.edit', params: { id: post.id } }">Edit</router-link>
-            <a href="#" @click.perevent="deletePost(post.id)" class="ml-2">Delete</a>
+            <router-link v-if="can('posts.update')" :to="{ name: 'posts.edit', params: { id: post.id } }">Edit</router-link>
+            <a href="#" v-if="can('posts.delete')" @click.perevent="deletePost(post.id)" class="ml-2">Delete</a>
           </td>
         </tr>
 
